@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         All products
       </Typography>
 
-      {/* <ProductList products={initialData.products as any} /> */}
+      <ProductList products={initialData.products as any} />
     </ShopLayout>
   );
 };

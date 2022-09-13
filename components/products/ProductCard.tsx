@@ -15,6 +15,7 @@ interface Props {
 
 export const ProductCard: FC<Props> = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const currentImage = isHovered ? product.images[1] : product.images[0];
 
   return (
     <Grid
@@ -28,7 +29,7 @@ export const ProductCard: FC<Props> = ({ product }) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            image={`/products/${product.images[0]}`}
+            image={`/products/${currentImage}`}
             alt={product.title}
           />
         </CardActionArea>
