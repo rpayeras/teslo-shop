@@ -3,7 +3,7 @@ export interface IProduct {
   images: string[];
   inStock: number;
   price: number;
-  sizes: IValidSizes[];
+  sizes: ISize[];
   slug: string;
   tags: string[];
   title: string;
@@ -11,5 +11,5 @@ export interface IProduct {
   gender: "men" | "women" | "kid" | "unisex";
 }
 
-export type IValidSizes = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
+export type ISize = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
 export type IValidTypes = "shirts" | "pants" | "hoodies" | "hats";

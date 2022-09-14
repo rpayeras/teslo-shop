@@ -4,9 +4,11 @@ import {
   CardActionArea,
   CardMedia,
   Grid,
+  Link,
   Typography,
 } from "@mui/material";
-import React, { FC, useState } from "react";
+import NextLink from "next/link";
+import React, { FC, useMemo, useState } from "react";
 import { IProduct } from "../../interfaces";
 
 interface Props {
@@ -15,7 +17,11 @@ interface Props {
 
 export const ProductCard: FC<Props> = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const currentImage = isHovered ? product.images[1] : product.images[0];
+  const productImage = useMemo(() => {
+    return isHovered
+      ? `/products/${product.images[1]}`
+      : `/products/${product.images[0]}`;
+  }, [isHovered, product.images]);
 
   return (
     <Grid
@@ -26,13 +32,19 @@ export const ProductCard: FC<Props> = ({ product }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <Card>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            image={`/products/${currentImage}`}
-            alt={product.title}
-          />
-        </CardActionArea>
+        <NextLink href="/product/slug" passHref prefetch={false}>
+          <Link>
+            <CardActionArea>
+              <CardMedia
+                className="fadeIn"
+                component="img"
+                image={productImage}
+                alt={product.title}
+                onLoad={() => console.log("img loaded")}
+              />
+            </CardActionArea>
+          </Link>
+        </NextLink>
       </Card>
 
       <Box sx={{ mt: 1 }} className="fadeIn">
