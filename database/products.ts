@@ -1,18 +1,17 @@
+import { Gender, ProductType, Size } from "../interfaces";
+
 interface SeedProduct {
   description: string;
   images: string[];
   inStock: number;
   price: number;
-  sizes: ValidSizes[];
+  sizes: Size[];
   slug: string;
   tags: string[];
   title: string;
-  type: ValidTypes;
-  gender: "men" | "women" | "kid" | "unisex";
+  type: ProductType;
+  gender: Gender;
 }
-
-type ValidSizes = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
-type ValidTypes = "shirts" | "pants" | "hoodies" | "hats";
 
 interface SeedData {
   products: SeedProduct[];

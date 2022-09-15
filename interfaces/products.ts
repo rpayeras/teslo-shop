@@ -1,15 +1,18 @@
-export interface IProduct {
+export interface Product {
   description: string;
   images: string[];
   inStock: number;
   price: number;
-  sizes: ISize[];
+  sizes: Size[];
   slug: string;
   tags: string[];
   title: string;
-  type: IValidTypes;
-  gender: "men" | "women" | "kid" | "unisex";
+  type: ProductType;
+  gender: Gender;
+  createdAt: string;
+  updatedAt: string;
 }
 
-export type ISize = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
-export type IValidTypes = "shirts" | "pants" | "hoodies" | "hats";
+export type Size = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
+export type ProductType = "shirts" | "pants" | "hoodies" | "hats";
+export type Gender = "men" | "women" | "unisex" | "kid";
