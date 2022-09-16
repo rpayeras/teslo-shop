@@ -12,8 +12,14 @@ import {
 } from "@mui/material";
 
 import { SearchOutlined, ShoppingCartOutlined } from "@mui/icons-material";
+import { useRouter } from "next/router";
+import { UiContext } from "../../context";
+import { useContext } from "react";
 
 export const Navbar = () => {
+  const { query } = useRouter();
+  const { toggleSideMenu } = useContext(UiContext);
+
   return (
     <AppBar>
       <Toolbar>
@@ -29,17 +35,23 @@ export const Navbar = () => {
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
           <NextLink href="/category/men" passHref>
             <Link>
-              <Button>Men</Button>
+              <Button color={query.slug === "men" ? "primary" : "info"}>
+                Men
+              </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/women" passHref>
             <Link>
-              <Button>Women</Button>
+              <Button color={query.slug === "women" ? "primary" : "info"}>
+                Women
+              </Button>
             </Link>
           </NextLink>
           <NextLink href="/category/kids" passHref>
             <Link>
-              <Button>Kids</Button>
+              <Button color={query.slug === "kids" ? "primary" : "info"}>
+                Kids
+              </Button>
             </Link>
           </NextLink>
         </Box>
@@ -59,7 +71,7 @@ export const Navbar = () => {
             </IconButton>
           </Link>
         </NextLink>
-        <Button>Menu</Button>
+        <Button onClick={toggleSideMenu}>Menu</Button>
       </Toolbar>
     </AppBar>
   );
